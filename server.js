@@ -38,7 +38,7 @@ app.use(cors());
 
 // DB Config
 const db =
-	'mongodb+srv://Admin:qwerty12345@cards.jug3a.mongodb.net/flashcards?retryWrites=true&w=majority';
+	'mongodb+srv://Admin:qwerty12345@cards.jug3a.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
 // Connect to MongoDB
 mongoose
