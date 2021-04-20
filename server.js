@@ -37,7 +37,8 @@ app.use(express.json());
 app.use(cors());
 
 // DB Config
-const db = process.env.MONGODB_URI;
+const db =
+	'mongodb+srv://Admin:qwerty12345@cards.jug3a.mongodb.net/flashcards?retryWrites=true&w=majority';
 
 // Connect to MongoDB
 mongoose
