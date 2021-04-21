@@ -69,13 +69,13 @@ require('./config/passport')(passport);
 // app.use('/GithubUser', githubAuth);
 
 // Routes
-app.use('/api/users', users);
+app.use('/users', users);
 
 // Google Auth
-app.use('/api/auths', users);
+app.use('/auths', users);
 
 // Connect to cards
-app.use('/api/cards', cardsRouter);
+app.use('/cards', cardsRouter);
 
 // Connect to redux
 app.use('/reduxs', reduxRouter);
@@ -84,19 +84,19 @@ app.use('/reduxs', reduxRouter);
 app.use('/npms', npmRouter);
 
 // Connect to express
-app.use('/api/expresses', expressRouter);
+app.use('/expresses', expressRouter);
 
 // Connect to Javascript
 app.use('/javascripts', javascriptRouter);
 
 // Connect to React
-app.use('/api/reacts', reactRouter);
+app.use('/reacts', reactRouter);
 
 // Connect to Mongo
-app.use('/api/mongos', mongoRouter);
+app.use('/mongos', mongoRouter);
 
 // Connect to Mongo
-app.use('/api/nodes', nodeRouter);
+app.use('/nodes', nodeRouter);
 
 require('./routes/authRoutes')(app);
 
