@@ -4,9 +4,9 @@ const passport = require('passport');
 const path = require('path');
 const cors = require('cors');
 const keys = require('./config/keys');
-// const cookieSession = require('cookie-session');
+const cookieSession = require('cookie-session');
 
-// const githubAuth = require('./routes/githubAuth');
+const githubAuth = require('./routes/githubAuth');
 const users = require('./routes/users');
 const cardsRouter = require('./routes/cards');
 const reduxRouter = require('./routes/reduxs');
@@ -51,17 +51,17 @@ mongoose
 	.then(() => console.log('MongoDB successfully connected'))
 	.catch((err) => console.log(err));
 
-// Cookie Session
-// app.use(
-// 	cookieSession({
-// 		maxAge: 30 * 24 * 60 * 60 * 1000,
-// 		keys: [keys.cookieKey],
-// 	}),
-// );
+// Cookie Swssion
+app.use(
+	cookieSession({
+		maxAge: 30 * 24 * 60 * 60 * 1000,
+		keys: [keys.cookieKey],
+	}),
+);
 
 // Passport middleware
 app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.session());
 
 // Passport config
 require('./config/passport')(passport);
@@ -99,7 +99,7 @@ app.use('/mongos', mongoRouter);
 // Connect to Mongo
 app.use('/nodes', nodeRouter);
 
-// require('./routes/authRoutes')(app);
+require('./routes/authRoutes')(app);
 
 // for production
 
