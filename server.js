@@ -116,18 +116,18 @@ require('./routes/authRoutes')(app);
 // app.listen(PORT, () => console.log(`Server up and running on port ${PORT} !`));
 
 // Serve static assets in production
-// if (process.env.NODE_ENV === 'production') {
-// 	// Set static folder
-// 	app.use(express.static('client/build'));
+if (process.env.NODE_ENV === 'production') {
+	// Set static folder
+	app.use(express.static('client/build'));
 
-// 	app.get('*', (req, res) =>
-// 		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')),
-// 	);
-// }
+	app.get('*', (req, res) =>
+		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')),
+	);
+}
 
 // ex. template express.static(root, [options])
-app.get('/*', function (req, res) {
-	res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+// app.get('/*', function (req, res) {
+// 	res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
