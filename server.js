@@ -71,7 +71,7 @@ require('./config/passport')(passport);
 // app.use('/GithubUser', githubAuth);
 
 // Google Auth
-app.use(googleAuth);
+// app.use(googleAuth);
 
 // Routes
 app.use('/users', users);
