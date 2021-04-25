@@ -17,6 +17,8 @@ const javascriptRouter = require('./routes/javascriptCards');
 const reactRouter = require('./routes/reactCards');
 const mongoRouter = require('./routes/mongoCards');
 const nodeRouter = require('./routes/nodeCards');
+const googleRouter = require('./routes/index');
+
 require('./models/googleUserModel');
 require('./services/passport');
 
@@ -78,6 +80,10 @@ app.use('/users', users);
 
 // Google Auth
 app.use('/auths', users);
+
+// Google OAuth
+app.use('/auth/google', googleRouter);
+app.use('/auth/google/callback', googleRouter);
 
 // Connect to cards
 app.use('/cards', cardsRouter);
