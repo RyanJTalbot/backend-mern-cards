@@ -2,19 +2,23 @@ const { OAuth2Client } = require('google-auth-library');
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 const googleAuth = async (token) => {
-	const ticke = await client.verifyIdToken({
-		idToken: token,
-		audience: process.env.GOOGLE_CLIENT_ID,
-	});
-	const payload = ticket.getPayload();
-	// console.log('payload:', payload);
+	try {
+		const ticket = await client.verifyIdToken({
+			idToken: token,
+			audience:
+				'401853306024-pbig7urt774q77cgeeu7ebq344evo4cu.apps.googleusercontent.com',
+		});
 
-	console.log(`User ${payload.name} verified`);
+		const payload = ticket.getPayload();
 
-	const { sub, email, name, picture } = payload;
+		console.log(`User ${payload.name} verified`);
 
-	const userId = sub;
-	return { userId, email, fullname: name, photoUrl: picture };
+		const { sub, email, name, picture } = payload;
+		const userId = sub;
+		return { userId, email, fullName: name, photoUrl: picture };
+	} catch (error) {
+		console.error(error);
+	}
 };
 
 module.exports = googleAuth;
